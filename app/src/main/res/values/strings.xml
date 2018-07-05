@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Ecart</string>
+    <string name="action_settings">Settings</string>
+    <string name="network_err">Please check your internet connection!</string>
+</resources>
