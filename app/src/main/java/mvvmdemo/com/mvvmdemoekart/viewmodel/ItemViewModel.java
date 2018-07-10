@@ -17,6 +17,7 @@ import mvvmdemo.com.mvvmdemoekart.model.Item;
 import mvvmdemo.com.mvvmdemoekart.remoteDao.API;
 import mvvmdemo.com.mvvmdemoekart.remoteDao.AppCallBackInterface;
 import mvvmdemo.com.mvvmdemoekart.repository.ProjectRepository;
+import mvvmdemo.com.mvvmdemoekart.utility.AppUtil;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -27,16 +28,16 @@ public class ItemViewModel extends AndroidViewModel {
 
     private final LiveData<List<Item>> itemListObservable;
 
-    private String itemName;
-    private String itemDescription;
-    private String ItemDelivery;
-    private String itemId;
-    private String itemPrice;
-    private String itemUrl;
+    private ProjectRepository projectRepository;
 
     public ItemViewModel(@NonNull Application application) {
         super(application);
-        itemListObservable = ProjectRepository.getInstance().getItemList();
+        projectRepository=ProjectRepository.getInstance(application);
+        if (AppUtil.isNetworkAvailable(application)) {
+            itemListObservable = projectRepository.getItemList();
+        } else {
+            itemListObservable = projectRepository.getAllItemsOffline();
+        }
     }
 
 
@@ -46,7 +47,10 @@ public class ItemViewModel extends AndroidViewModel {
 
 
 
-
-
-
+    public void insert(List<Item> items) { projectRepository.insertOffline(items); }
 }
+
+
+
+
+

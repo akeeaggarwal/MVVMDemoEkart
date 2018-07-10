@@ -1,16 +1,23 @@
 package mvvmdemo.com.mvvmdemoekart.model;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
 import android.databinding.BaseObservable;
 import android.databinding.BindingAdapter;
+import android.support.annotation.NonNull;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+
+@Entity(tableName ="ecart_item")
 public class Item{
     public String itemName;
     public String itemDescription;
     public String ItemDelivery;
+    @PrimaryKey
+    @NonNull
     public String itemId;
     public String itemPrice;
     public String itemUrl;

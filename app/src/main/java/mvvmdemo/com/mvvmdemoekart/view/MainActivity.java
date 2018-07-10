@@ -48,18 +48,19 @@ public class MainActivity extends AppCompatActivity {
 
         if (!AppUtil.isNetworkAvailable(this)){
             Toast.makeText(this,R.string.network_err,Toast.LENGTH_LONG).show();
-            return;
+           // return;
         }
         progressBar.setVisibility(View.VISIBLE);
         itemViewModel.getItemListObservable().observe(this, new Observer<List<Item>>() {
             @Override
             public void onChanged(@Nullable List<Item> items) {
+                progressBar.setVisibility(View.GONE);
                 if (items!=null){
                     adapter=new ItemListAdapter(getApplicationContext(),items);
                     rvItems.setAdapter(adapter);
-                    progressBar.setVisibility(View.GONE);
+
                 }
-                progressBar.setVisibility(View.GONE);
+
             }
         });
 

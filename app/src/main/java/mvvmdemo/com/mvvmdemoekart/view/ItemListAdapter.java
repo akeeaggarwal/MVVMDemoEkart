@@ -6,11 +6,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import mvvmdemo.com.mvvmdemoekart.model.Item;
-import mvvmdemo.com.mvvmdemoekart.viewmodel.ItemViewModel;
-import mvvmdemo.com.mvvmdemoekart.databinding.ItemDataBinding;
-
 import java.util.List;
+
+import mvvmdemo.com.mvvmdemoekart.databinding.ItemDataBinding;
+import mvvmdemo.com.mvvmdemoekart.model.Item;
 
 public class ItemListAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
