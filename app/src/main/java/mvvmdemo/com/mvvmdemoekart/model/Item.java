@@ -1,12 +1,20 @@
 package mvvmdemo.com.mvvmdemoekart.model;
 
-public class Item {
+import android.databinding.BaseObservable;
+import android.databinding.BindingAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+
+public class Item{
     public String itemName;
     public String itemDescription;
     public String ItemDelivery;
     public String itemId;
     public String itemPrice;
     public String itemUrl;
+
 
 
     public String getItemName() {
@@ -56,4 +64,34 @@ public class Item {
     public void setItemUrl(String itemUrl) {
         this.itemUrl = itemUrl;
     }
+
+
+
+    @BindingAdapter({"bind:itemUrl"})
+    public static void loadImage(ImageView view, String imageUrl) {
+        Glide.with(view.getContext())
+                .load(imageUrl)
+                .into(view);
+
+    }
+
+
+    @BindingAdapter({"bind:itemPrice"})
+    public static void setPrice(TextView view, String price) {
+        view.setText("Rs. " +price);
+    }
+
+
+    @BindingAdapter({"bind:ItemDelivery"})
+    public static void setDelivery(TextView view, String delivery) {
+        view.setText("- " +delivery);
+    }
+
+
+    @BindingAdapter({"bind:itemDescription"})
+    public static void setDesc(TextView view, String itemDescription) {
+        view.setText("- " +itemDescription);
+    }
+
+
 }

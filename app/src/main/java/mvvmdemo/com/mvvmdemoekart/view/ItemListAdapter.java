@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import mvvmdemo.com.mvvmdemoekart.model.Item;
 import mvvmdemo.com.mvvmdemoekart.viewmodel.ItemViewModel;
 import mvvmdemo.com.mvvmdemoekart.databinding.ItemDataBinding;
 
@@ -14,10 +15,10 @@ import java.util.List;
 public class ItemListAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
     private Context context;
-    private List<ItemViewModel> itemsList;
+    private List<Item> itemsList;
     private LayoutInflater infater;
 
-    public ItemListAdapter(Context context, List<ItemViewModel> itemsList){
+    public ItemListAdapter(Context context, List<Item> itemsList){
         this.context=context;
         this.itemsList=itemsList;
     }
@@ -33,8 +34,8 @@ public class ItemListAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-            ItemViewModel itemViewModel=itemsList.get(position);
-            holder.bind(itemViewModel);
+            Item item=itemsList.get(position);
+            holder.bind(item);
     }
 
     @Override
